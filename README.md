@@ -35,7 +35,8 @@ nano ~/.zshrc
 Elimina el alias codesk y guarda el archivo. 
 Delete the codesk alias and save the file.
 
-Re-ejecuta el script de configuración para restablecer el alias. 
-Re-run the setup script to reset the alias.
-
+Actualiza .zshrc / Update .zshrc
+```bash
+source ~/.zshrc
+```
 
