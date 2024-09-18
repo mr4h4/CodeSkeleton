@@ -13,6 +13,12 @@ git clone https://github.com/Here-Develop/CodeSkeleton.git
 ```bash
 sudo bash codeskeleton_MAIN.sh
 ```
+Volver a ejecutar, esta vez **sin sudo** (una vez por usuario)
+"Run again, this time **without sudo** (once per user)"
+
+```bash
+bash codeskeleton_MAIN.sh
+```
 **A partir de ahora,** podrás usar el comando **codesk** para ejecutar el script.
 **From now**, you can use the **codesk** command to run the script.
 
