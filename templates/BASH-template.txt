@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# ===== General Information ===== # ===== Información general =====
+
+# Script Name: 
+# Description: 
+# Version: 0.1 
+# Author: # Autor:
+
+## ===== Start ===== ## ===== Inicio =====
+
+# ===== Global Variables ===== # ===== Variables globales =====
+
+# Define colors for output # Definir colores para el output
+
+# ===== Functions ===== # ===== Funciones =====
+
+# Function to display log messages # Función para mostrar mensajes de log
+
+# Help function # Función de ayuda
+
+# Error function # Función de error
+
+# Main function # Función principal
+
+# ===== Execution ===== # ===== Ejecución =====
+# Check if the script is being run directly (not "sourced), and call the main function. # Verifica si el script ha sido ejecutado directamente (no "sourced), y llama a la función main.
+
+#if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then #if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+#    main "$@" #    main "$@"
+#fi #fi
+
+
