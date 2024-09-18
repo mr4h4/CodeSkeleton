@@ -7,8 +7,8 @@
 ```bash
 git clone https://github.com/Here-Develop/CodeSkeleton.git
 ```
-2. **Ejecutar el script de configuración con 'bash'**(solo la primera vez)
-   **Run the setup script with 'bash'**(only the first time)
+2. **Ejecutar el script con 'bash'**(solo la primera vez)
+   **Run the script with 'bash'**(only the first time)
 
 ```bash
 bash codeskeleton_MAIN.sh
