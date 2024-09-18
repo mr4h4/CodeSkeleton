@@ -3,21 +3,20 @@
 # ===== Información general =====
 
 # Nombre del script: CodeSkeleton
-# Descripción: 
+# Descripción: Script para generar plantillas de código.
 # Versión: 0.1
 # Autor: Here-Develop // adrianheredev@gmail.com
 
+# Asignar permisos de ejecución al script (descomentar si es necesario)
+# chmod +x "$(realpath "$0")"
 
-## ===== Inicio =====
-#Asignación de permisos
-chmod +rwx "$0"
-#===CONFIGURAR ALIAS
+# === CONFIGURAR ALIAS
 ALIAS_NAME="codesk"
 SCRIPT_PATH="$(realpath "$0")"
 ZSHRC_FILE="$HOME/.zshrc"
 
 # Verifica si el alias ya existe en .zshrc
-if ! grep -q "alias $ALIAS_NAME=" "$ZSHRC_FILE"; then #Uso de grep en modo silencioso (-q)
+if ! grep -q "alias $ALIAS_NAME=" "$ZSHRC_FILE"; then
     echo "Adding '$ALIAS_NAME' to $ZSHRC_FILE..."
     echo "" >> "$ZSHRC_FILE"  # Asegura que haya una nueva línea antes de añadir el alias
     echo "alias $ALIAS_NAME='bash \"$SCRIPT_PATH\"'" >> "$ZSHRC_FILE"
@@ -77,9 +76,6 @@ echo -e "
 ╚█████╔╝╚█████╔╝██████╔╝███████╗  ██████╔╝██║░╚██╗███████╗███████╗███████╗░░░██║░░░╚█████╔╝██║░╚███║
 ░╚════╝░░╚════╝░╚═════╝░╚══════╝  ╚═════╝░╚═╝░░╚═╝╚══════╝╚══════╝╚══════╝░░░╚═╝░░░░╚════╝░╚═╝░░╚══╝
                                           - Here-Develop -
-----------------------------------------------------------------------------------------------------  
-                                               CONFIG
--(0) Set export directory 'CodeSkeleton/codesk/' by default)
 ----------------------------------------------------------------------------------------------------
                                        PLANTILLAS / TEMPLATES:
 -(1) Bash
@@ -88,95 +84,72 @@ echo -e "
 
 ----------------------------------------------------------------------------------------------------
 "
+
 # ===== Variables globales =====
+SCRIPT_PATH="$(realpath "$0")"
+SCRIPT_DIR="$(dirname "$SCRIPT_PATH")"
 extension=".???"
-exportto="$XDG_DESKTOP_DIR"
-BASHtemplate="templates/BASH-template.txt"
-HTMLtemplate="templates/HTML-template.txt"
-PYTHONtemplate="templates/PYTHON-template.txt"
+BASHtemplate="$SCRIPT_DIR/templates/BASH-template.txt"
+HTMLtemplate="$SCRIPT_DIR/templates/HTML-template.txt"
+PYTHONtemplate="$SCRIPT_DIR/templates/PYTHON-template.txt"
 
-
-# Definir colores para el output
-
-
-# ===== Funciones =====
-#Solicitar valor al usuario para la variable $EscogerOpcion
+# Funciones
+# Solicitar valor al usuario para la variable $EscogerOpcion
 read -p "Select an option >> " EscogerOpcion 
 
+# SELECCIÓN DE LENGUAJE
+case $EscogerOpcion in
+    0)  # CONFIGURAR DIRECTORIO
+        read -p "Set export directory >> (absolute path) " confDirectory
+        exportto="$confDirectory"
+        ;;
+    1)  # BASH
+        plantillaSeleccionada="Bash"
+        extension=".sh"
+        ;;
+    2)  # HTML
+        plantillaSeleccionada="HTML"
+        extension=".html"
+        ;;
+    3)  # PYTHON
+        plantillaSeleccionada="Python"
+        extension=".py"
+        ;;
+    *)
+        echo "Invalid Option"
+        exit 1
+        ;;
+esac
 
-#SELECCIÓN DE LENGUAJE
-if [ $EscogerOpcion -eq 0 ]; then #CONFIGURAR DIRECTORIO
-    read -p "Set export directory >> (absolut path)" confDirectory
-    exportto=$confDirectory
-elif [ $EscogerOpcion -eq 1 ]; then #BASH
-    plantillaSeleccionada="Bash"
-    extension=".sh"
+# GENERADOR DE ARCHIVOS
+plantillaBASH() { # Generar plantilla de Bash.
+   echo "You have selected the $plantillaSeleccionada template."
+    read -p "Set File Name >> (without extension) " NombreArchivo #Solicitar valor al usuario para la variable $NombreArchivo
+    echo "Generating '$NombreArchivo$extension'..."
+    cp "$BASHtemplate" "$PWD/$NombreArchivo$extension"
+    echo "$NombreArchivo$extension succesfully created."
+}
 
-elif [ $EscogerOpcion -eq 2 ]; then #HTML
-    plantillaSeleccionada="HTML"
-    extension=".html"
-
-elif [ $EscogerOpcion -eq 3 ]; then #PYTHON
-    plantillaSeleccionada="Python"
-    extension=".py"
-
-else
-    echo "Invalid Option"
-    exit 1
-fi
-
-#GENERADOR DE ARCHIVOS
-plantillaBASH() { #Generar plantilla de Bash.
+plantillaHTML() { # Generar plantilla de HTML.
     echo "You have selected the $plantillaSeleccionada template."
     read -p "Set File Name >> (without extension) " NombreArchivo #Solicitar valor al usuario para la variable $NombreArchivo
     echo "Generating '$NombreArchivo$extension'..."
-    mkdir -p "$exportto/codesk"
-    cp "$BASHtemplate" "$exportto/codesk/$NombreArchivo$extension"
-    echo "$NombreArchivo.sh succesfully created."
+    cp "$HTMLtemplate" "$PWD/$NombreArchivo$extension"
+    echo "$NombreArchivo$extension succesfully created."
 }
-plantillaHTML() { #Generar plantilla de HTML.
-    echo "You have selected the $plantillaSeleccionada template."
+
+plantillaPYTHON() { # Generar plantilla de Python.
+     echo "You have selected the $plantillaSeleccionada template."
     read -p "Set File Name >> (without extension) " NombreArchivo #Solicitar valor al usuario para la variable $NombreArchivo
     echo "Generating '$NombreArchivo$extension'..."
-    mkdir -p "$exportto/codesk"
-    cp "$HTMLtemplate" "$exportto/codesk/$NombreArchivo$extension"
-    echo "$NombreArchivo.html succesfully created."
+    cp "$PYTHONtemplate" "$PWD/$NombreArchivo$extension"
+    echo "$NombreArchivo$extension succesfully created."
 }
-plantillaPYTHON() { #Generar plantilla de Python.
-    echo "You have selected the $plantillaSeleccionada template."
-    read -p "Set File Name >> (without extension) " NombreArchivo #Solicitar valor al usuario para la variable $NombreArchivo
-    echo "Generating '$NombreArchivo.$extension'..."
-    mkdir -p "$exportto/codesk"
-    cp "$PYTHONtemplate" "$exportto/codesk/$NombreArchivo$extension"
-    echo "$NombreArchivo.$extension succesfully created."
-}
+
 # Asignar plantilla al generador
-if [ "$extension" == ".sh" ]; then
-    plantillaBASH
-elif [ "$extension" == ".html" ]; then
-    plantillaHTML
-elif [ "$extension" == ".py" ]; then
-    plantillaPYTHON
-else
-    echo "The template could not be assigned correctly."
-fi
-
-# Función para mostrar mensajes de log
-
-
-# Función de ayuda
-
-
-# Función de error
-
-
-# Función principal
-
-
-# ===== Ejecución =====
-# Verifica si el script ha sido ejecutado directamente (no "sourced), y llama a la función main.
-
-#if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-#    main "$@"
-#fi
-
+case "$extension" in
+    .sh) plantillaBASH ;;
+    .html) plantillaHTML ;;
+    .py) plantillaPYTHON ;;
+    *) echo "The template could not be assigned correctly." ;;
+esac
