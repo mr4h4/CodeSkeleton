@@ -14,9 +14,12 @@ git clone https://github.com/Here-Develop/CodeSkeleton.git
 bash codeskeleton_MAIN.sh
 ```
 
-**A partir de ahora,** podrás usar el comando **codesk** para ejecutar el script.
-**From now**, you can use the **codesk** command to run the script.
+**A partir de ahora,** podrás usar el comando **'codesk'** para ejecutar el script.
+**From now**, you can use the **'codesk'** command to run the script.
 
+```bash
+codesk
+```
 ---
 
 🛠️ **Solución de Errores / Troubleshooting**
