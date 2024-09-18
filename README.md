@@ -3,7 +3,7 @@
 ## 📜 Guía de Instalación / Installation Guide
 
 1. **Clonar este repositorio
-   Clone this repository**
+   / Clone this repository**
 ```bash
 git clone https://github.com/Here-Develop/CodeSkeleton.git
 ```
