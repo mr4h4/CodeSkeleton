@@ -7,18 +7,13 @@
 ```bash
 git clone https://github.com/Here-Develop/CodeSkeleton.git
 ```
-2. **Ejecutar el script de configuración con 'sudo'**(solo la primera vez)
-   **Run the setup script with 'sudo'**(only the first time)
-
-```bash
-sudo bash codeskeleton_MAIN.sh
-```
-Volver a ejecutar, esta vez **sin sudo** (una vez por usuario)
-"Run again, this time **without sudo** (once per user)"
+22. **Ejecutar el script de configuración con 'bash'**(solo la primera vez)
+   **Run the setup script with 'bash'**(only the first time)
 
 ```bash
 bash codeskeleton_MAIN.sh
 ```
+
 **A partir de ahora,** podrás usar el comando **codesk** para ejecutar el script.
 **From now**, you can use the **codesk** command to run the script.
 
