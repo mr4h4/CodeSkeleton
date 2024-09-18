@@ -5,7 +5,7 @@
 # Script Name: 
 # Description: 
 # Version: 0.1 
-# Author: # Autor:
+# Author:
 
 ## ===== Start ===== ## ===== Inicio =====
 

@@ -9,6 +9,8 @@
 
 
 ## ===== Inicio =====
+#Asignación de permisos
+chmod +rwx "$0"
 #===CONFIGURAR ALIAS
 ALIAS_NAME="codesk"
 SCRIPT_PATH="$(realpath "$0")"
@@ -75,6 +77,9 @@ echo -e "
 ╚█████╔╝╚█████╔╝██████╔╝███████╗  ██████╔╝██║░╚██╗███████╗███████╗███████╗░░░██║░░░╚█████╔╝██║░╚███║
 ░╚════╝░░╚════╝░╚═════╝░╚══════╝  ╚═════╝░╚═╝░░╚═╝╚══════╝╚══════╝╚══════╝░░░╚═╝░░░░╚════╝░╚═╝░░╚══╝
                                           - Here-Develop -
+----------------------------------------------------------------------------------------------------  
+                                               CONFIG
+-(0) Set export directory 'CodeSkeleton/codesk/' by default)
 ----------------------------------------------------------------------------------------------------
                                        PLANTILLAS / TEMPLATES:
 -(1) Bash
@@ -85,6 +90,7 @@ echo -e "
 "
 # ===== Variables globales =====
 extension=".???"
+exportto="$XDG_DESKTOP_DIR"
 BASHtemplate="templates/BASH-template.txt"
 HTMLtemplate="templates/HTML-template.txt"
 PYTHONtemplate="templates/PYTHON-template.txt"
@@ -99,7 +105,10 @@ read -p "Select an option >> " EscogerOpcion
 
 
 #SELECCIÓN DE LENGUAJE
-if [ $EscogerOpcion -eq 1 ]; then #BASH
+if [ $EscogerOpcion -eq 0 ]; then #CONFIGURAR DIRECTORIO
+    read -p "Set export directory >> (absolut path)" confDirectory
+    exportto=$confDirectory
+elif [ $EscogerOpcion -eq 1 ]; then #BASH
     plantillaSeleccionada="Bash"
     extension=".sh"
 
@@ -121,21 +130,24 @@ plantillaBASH() { #Generar plantilla de Bash.
     echo "You have selected the $plantillaSeleccionada template."
     read -p "Set File Name >> (without extension) " NombreArchivo #Solicitar valor al usuario para la variable $NombreArchivo
     echo "Generating '$NombreArchivo$extension'..."
-    cp "$BASHtemplate" "codesk/$NombreArchivo$extension"
+    mkdir -p "$exportto/codesk"
+    cp "$BASHtemplate" "$exportto/codesk/$NombreArchivo$extension"
     echo "$NombreArchivo.sh succesfully created."
 }
 plantillaHTML() { #Generar plantilla de HTML.
     echo "You have selected the $plantillaSeleccionada template."
     read -p "Set File Name >> (without extension) " NombreArchivo #Solicitar valor al usuario para la variable $NombreArchivo
     echo "Generating '$NombreArchivo$extension'..."
-    cp "$HTMLtemplate" "codesk/$NombreArchivo$extension"
+    mkdir -p "$exportto/codesk"
+    cp "$HTMLtemplate" "$exportto/codesk/$NombreArchivo$extension"
     echo "$NombreArchivo.html succesfully created."
 }
 plantillaPYTHON() { #Generar plantilla de Python.
     echo "You have selected the $plantillaSeleccionada template."
     read -p "Set File Name >> (without extension) " NombreArchivo #Solicitar valor al usuario para la variable $NombreArchivo
     echo "Generating '$NombreArchivo.$extension'..."
-    cp "$PYTHONtemplate" "codesk/$NombreArchivo$extension"
+    mkdir -p "$exportto/codesk"
+    cp "$PYTHONtemplate" "$exportto/codesk/$NombreArchivo$extension"
     echo "$NombreArchivo.$extension succesfully created."
 }
 # Asignar plantilla al generador
@@ -164,7 +176,7 @@ fi
 # ===== Ejecución =====
 # Verifica si el script ha sido ejecutado directamente (no "sourced), y llama a la función main.
 
-if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-    main "$@"
-fi
+#if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+#    main "$@"
+#fi
 
