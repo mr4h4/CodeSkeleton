@@ -5,7 +5,7 @@
 1. **Clonar este repositorio
    / Clone this repository**
 ```bash
-git clone https://github.com/Here-Develop/CodeSkeleton.git
+git clone https://github.com/mr4h4/CodeSkeleton.git
 ```
 2. **Ejecutar el script con 'bash'**(solo la primera vez)
    **Run the script with 'bash'**(only the first time)

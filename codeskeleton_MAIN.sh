@@ -5,7 +5,7 @@
 # Nombre del script: CodeSkeleton
 # Descripción: Script para generar plantillas de código.
 # Versión: 0.1
-# Autor: Here-Develop // adrianheredev@gmail.com
+# Autor: mr4h4 // adrianheredev@gmail.com
 
 # Asignar permisos de ejecución al script (descomentar si es necesario)
 # chmod +x "$(realpath "$0")"
