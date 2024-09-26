@@ -1,19 +1,16 @@
 # =======================================================================
-# Script Name: [Nombre del Script]
-# Description: [Breve descripción del propósito del script]
-# Author: [Tu Nombre]
-# Version: [Número de Versión]
+# Script Name: 
+# Description: 
+# Author: 
 # =======================================================================
-
 # Import necessary modules
-# Importa los módulos necesarios
 
 
 # =======================================================================
 # Constants
 # =======================================================================
-# Define constants here
-# Define constantes aquí
+# Define constants 
+
 
 
 # =======================================================================
