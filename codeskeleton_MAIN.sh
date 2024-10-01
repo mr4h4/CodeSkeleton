@@ -79,7 +79,7 @@ echo -e "
 ----------------------------------------------------------------------------------------------------
                                        PLANTILLAS / TEMPLATES:
 -(1) Bash        -(4) CSS
--(2) HTML
+-(2) HTML        -(5) C
 -(3) Python
 
 ----------------------------------------------------------------------------------------------------
@@ -93,6 +93,7 @@ BASHtemplate="$SCRIPT_DIR/templates/BASH-template.txt"
 HTMLtemplate="$SCRIPT_DIR/templates/HTML-template.txt"
 PYTHONtemplate="$SCRIPT_DIR/templates/PYTHON-template.txt"
 CSStemplate="$SCRIPT_DIR/templates/CSS-template.txt"
+Ctemplate="$SCRIPT_DIR/templates/C-template.txt"
 
 # Funciones
 # Solicitar valor al usuario para la variable $EscogerOpcion
@@ -119,6 +120,10 @@ case $EscogerOpcion in
     4)  # CSS
         plantillaSeleccionada="CSS"
         extension=".css"
+        ;;
+    5) #C
+        plantillaSeleccionada="C"
+        extension=".c"
         ;;
     *)
         echo "Invalid Option"
@@ -157,6 +162,13 @@ plantillaCSS() { # Generar plantilla de CSS.
     cp "$CSStemplate" "$PWD/$NombreArchivo$extension"
     echo "$NombreArchivo$extension succesfully created."
 }
+plantillaC() { # Generar plantilla de C
+     echo "You have selected the $plantillaSeleccionada template."
+    read -p "Set File Name >> (without extension) " NombreArchivo #Solicitar valor al usuario para la variable $NombreArchivo
+    echo "Generating '$NombreArchivo$extension'..."
+    cp "$Ctemplate" "$PWD/$NombreArchivo$extension"
+    echo "$NombreArchivo$extension succesfully created."
+}
 
 
 # Asignar plantilla al generador
@@ -165,5 +177,6 @@ case "$extension" in
     .html) plantillaHTML ;;
     .py) plantillaPYTHON ;;
     .css) plantillaCSS ;;
+    .c) plantillaC ;;
     *) echo "The template could not be assigned correctly." ;;
 esac
