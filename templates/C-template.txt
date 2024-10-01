@@ -1,0 +1,10 @@
+// Standard C module for prints, scans...
+#include <stdio.h>
+
+// Main function: program execution starts here
+int main() {
+    // Your code here
+
+    // Return 0 indicates the program finished successfully
+    return 0;
+}
